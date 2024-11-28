@@ -1,0 +1,4 @@
+*.bin
+*.cph
+.cph/
+.cph/*
