@@ -6,7 +6,7 @@ using namespace std;
 #define int long long
 #define float double
 #define null nullptr
-#define N static_cast<int>(1e5+10)
+#define N static_cast<int>(1e5 + 10)
 #define pi (3.141592653589)
 #define mod 1000000007
 #define mini INT_MIN
@@ -17,7 +17,8 @@ vector<string> Split(string &s, string key)
 {
    int start = 0, pos = 0;
    vector<string> res;
-   while ((pos = s.find(key, start)) != string::npos){
+   while ((pos = s.find(key, start)) != string::npos)
+   {
       res.push_back(s.substr(start, pos - start));
       start = pos + key.size();
    }
@@ -34,33 +35,37 @@ string Trim(string &s)
       end--;
    return s.substr(start, end - start + 1);
 }
-vector<int> calculate_z_arr(string &s) {
-   int n = s.size();
-   vector<int> z(n, 0);
-   int l = 0, r = 0;
-   for (int i = 1; i < n; i++) {
-      if (i <= r) {
-         z[i] = min(r - i + 1, z[i - l]);
-      }
-      while (i + z[i] < n && s[z[i]] == s[i + z[i]]) {
-         z[i]++;
-      }
-      if (i + z[i] - 1 > r) {
-         l = i;
-         r = i + z[i] - 1;
-      }
-   }
-   return z;
-}
-int32_t main() {
-   string s;cin>>s;
-   string p;cin>>p;
-   string t = p + "$" + s;
-   vector<int> z=calculate_z_arr(t);
-   for(int i=p.size()+1;i<t.size();i++){
-      if(z[i]==p.size()){
-         cout<<i-p.size()-1<<" ";
+int32_t main()
+{
+   fast_io;
+   int n;
+   cin >> n;
+   vector<int> arr(n);
+   for (int i = 0; i < n; i++)
+      cin >> arr[i];
+   int count = 1;
+   int candidate = arr[0];
+   for (int i = 1; i < n; i++)
+   {
+      if (arr[i] == candidate)
+         count++;
+      else
+         count--;
+      if (count == 0)
+      {
+         candidate = arr[i];
+         count = 1;
       }
    }
+   count = 0;
+   for (int i = 0; i < n; i++)
+   {
+      if (arr[i] == candidate)
+         count++;
+   }
+   if (count > n / 2)
+      cout << candidate << endl;
+   else
+      cout << -1 << endl;
    return 0;
 }

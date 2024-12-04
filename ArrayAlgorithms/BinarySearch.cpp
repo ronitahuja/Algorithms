@@ -35,59 +35,34 @@ string Trim(string &s)
         end--;
     return s.substr(start, end - start + 1);
 }
-vector<int> lps(string &p)
-{
-    int n = p.size();
-    vector<int> lps(n, 0);
-    int len = 0;
-    for(int i=1;i<n;){
-        if(p[i]==p[len]){
-            len++;
-            lps[i] = len;
-            i++;
-        }
-        else{
-            if(len==0){
-                lps[i]=0;
-                i++;
-            }
-            else{
-                len=lps[len-1];
-            }
-        }
-    }
-    return lps;
-}
-void kmp(string &s, string &p)
-{
-    vector<int> lps_arr = lps(p);
-    int n = s.size(), m = p.size();
-    int i = 0, j = 0;
-    while (i < n)
-    {
-        if (s[i] == p[j])
-        {
-            i++;
-            j++;
-        }
-        if (j == m)
-        {
-            cout << "Pattern found at index " << i - j << endl;
-            j = lps_arr[j - 1];
-        }
-        else if (i < n && s[i] != p[j])
-        {
-            if (j == 0)
-                i++;
-            else
-                j = lps_arr[j - 1];
-        }
-    }
-}
 int32_t main()
 {
-    string s = "abcabcabcabc";
-    string p = "aabcaabxaaaz";
-    kmp(s, p);
+    fast_io;
+    int n;
+    cin >> n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+        cin >> arr[i];
+    int key;
+    cin >> key;
+    int i = 0, j = n - 1;
+    while (i <= j)
+    {
+        int mid = (i + ((j - i) >> 1));
+        if (arr[mid] == key)
+        {
+            cout << mid;
+            return 0;
+        }
+        else if (arr[mid] < key)
+        {
+            i = mid + 1;
+        }
+        else
+        {
+            j = mid - 1;
+        }
+    }
+    cout << -1;
     return 0;
 }

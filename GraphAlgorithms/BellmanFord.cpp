@@ -35,59 +35,38 @@ string Trim(string &s)
         end--;
     return s.substr(start, end - start + 1);
 }
-vector<int> lps(string &p)
+void bellmanford(int source, vector<vector<pair<int, int>>> &adjl,int vertices)
 {
-    int n = p.size();
-    vector<int> lps(n, 0);
-    int len = 0;
-    for(int i=1;i<n;){
-        if(p[i]==p[len]){
-            len++;
-            lps[i] = len;
-            i++;
-        }
-        else{
-            if(len==0){
-                lps[i]=0;
-                i++;
-            }
-            else{
-                len=lps[len-1];
+    vector<int> dist(vertices, INT_MAX);
+    dist[source] = 0;
+    for(int count=1;count<=vertices-1;count++){
+        for(auto &edge:adjl){
+            int u=edge.first;
+            int v=edge.second;
+            int w=edge.third;
+            if(dist[u]!=INT_MAX && dist[u]+w<dist[v]){
+                dist[v]=dist[u]+w;
             }
         }
     }
-    return lps;
-}
-void kmp(string &s, string &p)
-{
-    vector<int> lps_arr = lps(p);
-    int n = s.size(), m = p.size();
-    int i = 0, j = 0;
-    while (i < n)
-    {
-        if (s[i] == p[j])
-        {
-            i++;
-            j++;
-        }
-        if (j == m)
-        {
-            cout << "Pattern found at index " << i - j << endl;
-            j = lps_arr[j - 1];
-        }
-        else if (i < n && s[i] != p[j])
-        {
-            if (j == 0)
-                i++;
-            else
-                j = lps_arr[j - 1];
-        }
-    }
+    for (int i = 0; i < dist.size(); i++)
+        cout << dist[i] << " ";
 }
 int32_t main()
 {
-    string s = "abcabcabcabc";
-    string p = "aabcaabxaaaz";
-    kmp(s, p);
+    fast_io;
+    int edges, nodes;
+    cin >> nodes >> edges;
+    vector<vector<pair<int, int>>> adjl(nodes);
+    for (int i = 0; i < edges; i++)
+    {
+        int u, v, w;
+        cin >> u >> v >> w;
+        adjl[u].push_back({v, w});
+        adjl[v].push_back({u, w});
+    }
+    int source;
+    cin >> source;
+    bellmanford(source, adjl,int nodes);
     return 0;
 }

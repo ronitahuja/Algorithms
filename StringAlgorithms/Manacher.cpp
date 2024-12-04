@@ -34,33 +34,9 @@ string Trim(string &s)
       end--;
    return s.substr(start, end - start + 1);
 }
-vector<int> calculate_z_arr(string &s) {
-   int n = s.size();
-   vector<int> z(n, 0);
-   int l = 0, r = 0;
-   for (int i = 1; i < n; i++) {
-      if (i <= r) {
-         z[i] = min(r - i + 1, z[i - l]);
-      }
-      while (i + z[i] < n && s[z[i]] == s[i + z[i]]) {
-         z[i]++;
-      }
-      if (i + z[i] - 1 > r) {
-         l = i;
-         r = i + z[i] - 1;
-      }
-   }
-   return z;
-}
 int32_t main() {
+   fast_io;
    string s;cin>>s;
-   string p;cin>>p;
-   string t = p + "$" + s;
-   vector<int> z=calculate_z_arr(t);
-   for(int i=p.size()+1;i<t.size();i++){
-      if(z[i]==p.size()){
-         cout<<i-p.size()-1<<" ";
-      }
-   }
+   
    return 0;
 }
