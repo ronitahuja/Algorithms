@@ -2,6 +2,7 @@
 Time complexity: O(n)
 Space complexity: O(n)
 where n is the length of the string.
+used to find the longest palindromic substring in a string.
 */
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast,unroll-loops")
