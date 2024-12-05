@@ -38,7 +38,7 @@ string Trim(string &s)
         end--;
     return s.substr(start, end - start + 1);
 }
-void floydwarshell(vector<vector<int>> &adjl, int vertices)
+void floydwarshall(vector<vector<int>> &adjl, int vertices)
 {
     for (int k = 0; k < vertices; k++)
     {
@@ -74,6 +74,6 @@ int32_t main()
         cin >> u >> v >> w;
         adjl[u][v] = w;
     }
-    floydwarshell(adjl, nodes);
+    floydwarshall(adjl, nodes);
     return 0;
 }
