@@ -1,4 +1,8 @@
-/**/
+/*
+Time complexity: O(n)
+Space complexity: O(n)
+where n is the length of the string.
+*/
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")

@@ -1,4 +1,7 @@
-/**/
+/*
+Time Complexity: O((V+E)logV)
+Space Complexity: O(V)
+*/
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
@@ -35,7 +38,7 @@ string Trim(string &s)
         end--;
     return s.substr(start, end - start + 1);
 }
-void dijsktra(int source, vector<vector<pair<int, int>>> &adjl)
+void dijkstra(int source, vector<vector<pair<int, int>>> &adjl)
 {
     vector<int> dist(adjl.size(), INT_MAX);
     dist[source] = 0;
@@ -73,6 +76,6 @@ int32_t main()
     }
     int source;
     cin >> source;
-    dijsktra(source, adjl);
+    dijkstra(source, adjl);
     return 0;
 }

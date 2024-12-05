@@ -1,4 +1,7 @@
-/**/
+/*
+Time Complexity: O(nlogk) k is the maximum number of digits in a number in the array
+Space Complexity: O(n)
+*/
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")

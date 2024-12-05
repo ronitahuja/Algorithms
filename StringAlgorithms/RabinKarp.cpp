@@ -1,4 +1,8 @@
-/**/
+/*
+Time complexity: O(m+n) sometimes O(mn)
+Space complexity: O(1)
+where m is the length of the pattern and n is the length of the text.
+*/
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")

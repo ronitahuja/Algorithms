@@ -1,4 +1,7 @@
-/**/
+/*
+Time Complexity: O(n^2)
+Space Complexity: O(1)
+*/
 #include <bits/stdc++.h>
 #pragma GCC optimize("Ofast,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
