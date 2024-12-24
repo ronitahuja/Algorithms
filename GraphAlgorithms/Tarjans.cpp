@@ -2,7 +2,7 @@
 Tarjan's Algorithm is used to find all Strongly Connected Components in a Directed Graph.
 A Strongly Connected Component (SCC) of a directed graph is a maximal strongly connected subgraph.
 Time Complexity: O(V+E)
-Space Complexity: O(V)
+Space Complexity: O(V+E)
 
 */
 #include <bits/stdc++.h>
